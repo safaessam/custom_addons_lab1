@@ -1,0 +1,17 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="todo_ticket_kanban_view">
+            <field name="name">todo.ticket.kanban</field>
+            <field name="model">todo.ticket</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="name"/>
+                    <field name="number"/>
+                    <field name="tag"/>
+                    <field name="state"/>
+                    <field name="assign_to"/>
+                </kanban>
+            </field>
+        </record>
+    </data>
+</odoo>
