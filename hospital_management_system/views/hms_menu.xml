@@ -1,0 +1,7 @@
+
+<odoo>
+    <data>
+        <menuitem id="menu_hms_root" name="HMS" sequence="10"/>
+        <menuitem id="menu_hms_patient" name="Patients" parent="menu_hms_root" sequence="10" action="action_hms_patient_list"/>
+    </data>
+</odoo>

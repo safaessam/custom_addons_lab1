@@ -1,0 +1,87 @@
+<odoo>
+    <data>
+        <record id="view_ticket_tree" model="ir.ui.view">
+            <field name="name">Ticket Tree View</field>
+            <field name="model">todo_app.ticket</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="number"/>
+                    <field name="tag"/>
+                    <field name="state"/>
+                    <field name="assign_to"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Kanban View -->
+        <record id="view_ticket_kanban" model="ir.ui.view">
+            <field name="name">Ticket Kanban View</field>
+            <field name="model">todo_app.ticket</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile">
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="o_kanban_record">
+                                <div class="o_kanban_card">
+                                    <div class="o_kanban_primary">
+                                        <div class="o_kanban_title">
+                                            <t t-esc="record.name.value"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                    <field name="name"/>
+                    <field name="state"/>
+                    <field name="assign_to"/>
+
+                </kanban>
+            </field>
+        </record>
+
+        <record id="view_ticket_form" model="ir.ui.view">
+            <field name="name">Ticket Form View</field>
+            <field name="model">todo_app.ticket</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="number"/>
+                            <field name="tag"/>
+                            <field name="state"/>
+                            <field name="assign_to"/>
+                            <field name="file"/>
+                            <field name="description"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action: All Tickets -->
+        <record id="action_tickets_all" model="ir.actions.act_window">
+            <field name="name">All Tickets</field>
+            <field name="res_model">todo_app.ticket</field>
+            <field name="view_mode">tree,kanban,form</field>
+        </record>
+
+        <record id="action_tickets_my" model="ir.actions.act_window">
+            <field name="name">My Tickets</field>
+            <field name="res_model">todo_app.ticket</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="domain">[('assign_to', '=', uid)]</field>
+        </record>
+
+        <menuitem id="menu_todo" name="Todo" sequence="10"/>
+
+        <menuitem id="menu_tickets" name="Tickets" parent="menu_todo" sequence="10"/>
+
+
+        <menuitem id="menu_tickets_all" name="All Tickets" parent="menu_tickets" action="action_tickets_all" sequence="10"/>
+
+        <menuitem id="menu_tickets_my" name="My Tickets" parent="menu_tickets" action="action_tickets_my" sequence="20"/>
+    </data>
+</odoo>

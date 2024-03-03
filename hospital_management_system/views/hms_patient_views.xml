@@ -1,0 +1,53 @@
+
+<odoo>
+    <data>
+        <record id="view_hms_patient_form" model="ir.ui.view">
+            <field name="name">hms.patient.form</field>
+            <field name="model">hms.patient</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="first_name"/>
+                            <field name="last_name"/>
+                            <field name="birth_date"/>
+                            <field name="history"/>
+                            <field name="cr_ratio"/>
+                            <field name="blood_type"/>
+                            <field name="pcr"/>
+                            <field name="image"/>
+                            <field name="address"/>
+                            <field name="age"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_hms_patient_tree" model="ir.ui.view">
+            <field name="name">hms.patient.tree</field>
+            <field name="model">hms.patient</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="first_name"/>
+                    <field name="last_name"/>
+                    <field name="birth_date"/>
+                    <field name="age"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="menu_hms_patient_root" model="ir.ui.menu">
+            <field name="name">Patients</field>
+            <field name="sequence" eval="10"/>
+            <field name="action" ref="action_hms_patient_list"/>
+        </record>
+
+        <record id="action_hms_patient_list" model="ir.actions.act_window">
+            <field name="name">Patients</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hms.patient</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>
