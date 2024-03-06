@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_hms_patient_user,Access HMS Patient User,model_hms_patient,base.group_user,1,1,1,1
-access_hms_patient_manager,Access HMS Patient Manager,model_hms_patient,base.group_erp_manager,1,1,1,1
+access_hms_patient,Access HMS Patient,model_hms_patient,base.group_user,1,1,1,1
+access_hms_department,Access HMS Department,model_hms_department,base.group_user,1,1,1,1
+access_hms_doctor,Access HMS Doctor,model_hms_doctor,base.group_user,1,1,1,1
