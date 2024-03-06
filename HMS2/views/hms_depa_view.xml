@@ -1,0 +1,50 @@
+<odoo>
+    <data>
+        <record id="depart_action" model="ir.actions.act_window">
+            <field name = "name" >Department</field>
+                <field name = "res_model">hms.department</field>
+        </record>
+        <record id = "hms_depa_tree_view" model = "ir.ui.view">
+            <field name = "name">Department Tree View</field>
+            <field name = "model">hms.department</field>
+            <field name = "arch" type = "xml">
+                <tree>
+                    <field name = "name"/>
+                    <field name = "capcity"/>
+                    <field name = "is_opened"/>
+                </tree>
+            </field>
+        </record>
+        <record id="hms_depa_form_view" model="ir.ui.view">
+            <field name="name">Department Form View</field>
+            <field name="model">hms.department</field>
+            <field name="arch" type="xml">
+                <form >
+                    <sheet string="department Info">
+                        <group>
+                            <field name = "name" />
+                            <field name = "capcity"/>
+                            <field name = "is_opened"/>
+                        </group>
+                        <notebook>
+                            <page  string="Depart Info">
+                        <group  string="Patients Data">
+                            <field name="patient_ids"></field>
+                        </group>
+                            </page>
+                            <page  string="Doctor Info">
+                            <group  string="Doctor Data">
+                                <field name="doctors_department" />
+                            </group>
+                        </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    <menuitem name="HMS" id="hms_menu"/>
+    <menuitem name="department" id="Hms_depart_menu" parent="hms_menu" action="depart_action" />
+    </data>
+
+
+</odoo>

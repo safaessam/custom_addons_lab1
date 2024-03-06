@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="HMS_patient_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="patient">
+                    <div class="page">
+                        <h1>Patient Information</h1>
+                        <table>
+                            <tr>
+                                <td>Name:</td>
+                                <td><t t-esc="patient.name"/></td>
+                            </tr>
+                            <tr>
+                                <td>Age:</td>
+                                <td><t t-esc="patient.age"/></td>
+                            </tr>
+                            <tr>
+                                <td>Gender:</td>
+                                <td><t t-esc="patient.gender"/></td>
+                            </tr>
+                            <tr>
+                                <td>Address:</td>
+                                <td><t t-esc="patient.address"/></td>
+                            </tr>
+                            <tr>
+                                <td>Phone:</td>
+                                <td><t t-esc="patient.phone"/></td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

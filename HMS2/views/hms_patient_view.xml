@@ -1,0 +1,82 @@
+<odoo>
+    <data>
+        <record id = "patient_action" model = "ir.actions.act_window">
+        <field name = "name" >Patient</field>
+            <field name = "res_model">hms.patient</field>
+        </record>
+        <record id = "hms_patient_tree_view" model = "ir.ui.view">
+            <field name = "name">Patient Tree View</field>
+            <field name = "model">hms.patient</field>
+            <field name = "arch" type = "xml">
+                <tree>
+                    <field name = "fname"/>
+                    <field name = "age"/>
+                    <field name = "patient_status"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id = "hms_patient_form_view" model = "ir.ui.view">
+            <field name = "name">Patient Form View</field>
+            <field name = "model">hms.patient</field>
+            <field name = "arch" type = "xml">
+                <form>
+                <sheet>
+                    <group string="Patient info">
+                    <field name = "fname" required = "True"/>
+                    <field name = "lname" required = "True"/>
+                    <field name = "email" required = "True"/>
+                    <field name = "age"/>
+                    <field name = "age2"/>
+                    <field name = "address"/>
+                    <field name = "birthdate"/>
+                    <field name = "image"/>
+                    </group>
+                    <notebook>
+                        <page  string="Medical Info">
+                            <group name="name" string="patient data">
+                                <field name = "patient_status"/>
+                                <field name = "history" attrs="{'invisible': [('age', '&lt;', 50)]}"/>
+                                <field name = "cr_ratio" attrs="{'required': [('pcr_test', '=', True)]}"/>
+                                <field name = "blood_type"/>
+                                <field name = "pcr_test"/>
+                            </group>
+                        </page>
+                        <page  string="Depart Info">
+                            <group  string="Depart Data">
+                                <field name="depart_name" domain="[('is_opened', '=', True)]"/>
+                                <field name="depart_capcity"/>
+                            </group>
+                        </page>
+                        <page  string="Doctor Info" groups="HMS Module.hms_manager">
+                            <group  string="Doctor Data">
+                                <field name="doctors_patient"/>
+                            </group>
+                        </page>
+                        <page  string="History Logs">
+                            <field name="level_log">
+                                <tree>
+                                    <field name="create_uid"/>
+                                    <field name="create_date"/>
+                                    <field name="description"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+
+
+    <menuitem name="HMS" id="hms_menu" />
+    <menuitem name="patient" id="Hms_patient_menu" parent="hms_menu" action = "patient_action"/>
+
+    </data>
+
+
+
+</odoo>
